@@ -1,0 +1,306 @@
+
+
+
+
+<div class="main">
+
+  <div class="toolbar" role="banner">
+
+    <img
+      width="60"
+      alt="Philip Morris International"
+      src="assets/pmi.svg"/>
+
+    <div class="top-banner">
+      <p>Strategic Workforce Planning and Insight</p>
+    </div>
+      
+    <div class="spacer"></div>
+  </div>
+
+  <p> </p>
+
+  <div class="question">
+    <p>Question 1</p>
+  </div>
+
+  <div class="subtoolbar">
+    What are the optimum staffing levels to ensure the new product launch attracts the greatest market share whilst still remaining within budget for Country X? 
+  </div>
+
+  <div class="method">
+    <p>Method 1</p>
+  </div>
+
+  <div class="text">
+    Predict market share based on available features, extracting feature importance, showing direction of the relation of market share with the most important features, and projecting market share after modifying staffing levels. 
+  </div>
+
+
+
+  <!-- <div class="sections">
+    <p>Modelling market share for Country X:</p>
+  </div> -->
+
+<div #vizContainer style="display: flex; justify-content: center"></div>
+
+<div class="sections">
+<p>Modelling market share for Country X:</p>
+</div>
+
+<div class="sections">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.brand_and_content}}" placeholder="Brand & Content" (input)="updateBrand($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.marketing_operations}}" placeholder="Marketing Operations" (input)="updateMO($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.digital_marketing}}" placeholder="Digital Marketing" (input)="updateDM($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.customer_care}}" placeholder="Customer Care" (input)="updateCC($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.indirect_retail}}" placeholder="Indirect Retail" (input)="updateIR($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.direct_retail}}" placeholder="Direct Retail" (input)="updateDR($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.direct_sales}}" placeholder="Direct Sales" (input)="updateDS($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.sales_system_support}}" placeholder="Sales Systems Support" (input)="updateSS($event)">
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="sections">    <p>
+    <button mat-raised-button (click)=onSubmit()>Run</button>
+  </p></div>
+
+<!-- <h2>Market share for Country X:</h2>
+    <p>{{backend.market_share}}</p> -->
+
+    <div class="sections">
+      <p>Projected Market share for Country X with simulated staffing levels: {{backend.market_share}}</p>
+      <!-- <p>{{backend.market_share}}</p> -->
+      </div>
+
+<div #vizContainer2 style="display: flex; justify-content: center"></div>
+
+<div class="method">
+  <p>Method 2</p>
+</div>
+
+<div class="text">
+  Predict distribution of staffing levels based on market share and number of employees. 
+</div>
+
+<div class="sections">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.employee_number}}" placeholder="Number of employees" (input)="updateEmployeeNumber($event)">
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.modelled_market_share}}" placeholder="Modelled market share" (input)="updateModelledMarketShare($event)">
+    </mat-form-field>
+  </form>
+</div>
+
+<div class="sections">    <p>
+  <button mat-raised-button (click)=getDistribution()>Run</button>
+</p></div>
+
+<div class="sections">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.pred_BC}}" placeholder="Brand & Content">
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.pred_MO}}" placeholder="Marketing Operations">
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.pred_DM}}" placeholder="Digital Marketing">
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.pred_CC}}" placeholder="Customer Care">
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.pred_IR}}" placeholder="Indirect Retail">
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.pred_DR}}" placeholder="Direct Retail">
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.pred_DS}}" placeholder="Direct Sales">
+    </mat-form-field>
+  </form>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput value ="{{backend.pred_SS}}" placeholder="Sales Systems Support">
+    </mat-form-field>
+  </form>
+
+</div>
+
+
+
+
+
+<div class="question">
+  <p>Question 2</p>
+</div>
+
+<div class="subtoolbar">
+  Which staff within country X are at risk of leaving over the next year?
+</div>
+
+<div #vizContainer3 style="display: flex; justify-content: center"></div>
+
+<div class="question">
+  <p>Question 3</p>
+</div>
+
+<div class="subtoolbar">
+  What is the forecast turnover rate?
+</div>
+
+<div class="text">
+  Below you can see forecasted turnover rates for all countries. Based on the current best model the forecasted turnover rate for Country X is about 15%.
+
+  <div #vizContainer4 style="display: flex; justify-content: center"></div>
+  <p>
+    Below you can see model performance on the validation set. F1 Score: 0.74.
+  </p>
+  <img
+    width="400"
+    alt="Philip Morris International"
+    src="assets/confusion_raw.png"/>
+
+    <img
+    width="400"
+    alt="Philip Morris International"
+    src="assets/confusion_percentage.png"/>
+</div>
+
+<div class="question">
+  <p>Question 4</p>
+</div>
+
+<div class="subtoolbar">
+  What possible actions would you recommend to retain key talent?
+</div>
+
+<div class="text">
+  Most people who are leaving in Country X are leaving within the first year. The most leavers are in Operations and at level Grade 10. One suggestion is to investigate what is happening in Operations and why people at Grade 10 are likely to leave the company.
+</div>
+
+<div class="question">
+  <p>Question 5</p>
+</div>
+
+<div class="subtoolbar">
+  If provided more time, what other data sources or techniques would you have used to provide insight for the MD?
+</div>
+
+<div class="text">
+  In the present model for staffing levels, we only see a snapshot. Head counts presumably changed organically within each territory. If we had more information on how it changed over time since product launch in each territory that would improve the models. For example, it is possible that when entering a new market only direct sales works, and we need lots of marketing staff, and when market share increases then increasing retail sales staff and shrinking marketing team becomes necessary. Here domain knowledge is important, as it is difficult to say given a snapshot of markets at different stages of market penetration what the ideal level of staffing is on any given stage. Any additional data that helps explain market share would be also useful, such as marketing data, and country specific data (e.g. is it more widespread to do direct sales vs. retail sales).<br>
+  <p>I would have spent more time on Method 2 for Question 1 to validate the modelling approach, and use additional features to model the distribution of employees.<br></p>
+  <p>For both questions I would have spent more time on examining outliers and how/whether to deal with them. I would also spend more time on hyperparameter tuning for the models. </p>
+  <p>Based on the feedback I would provide additional views on the dashboards to investigate the data for business users.</p>
+  
+
+</div>
+
+<div class="question">
+  <p>Technical notes:</p>
+</div>
+
+<div class="footnotes">
+  <p>
+  Technologies: <br>
+  Backend: Python + Flask <br>
+  Frontend: Angular + Tableau <br>
+  <br>
+  Machine learning algorithms: <br>
+  Question 1: Method 1: Gradient Boosting (scikit-learn)<br>
+  Question 1: Method 2: Neural Network (Keras/Tensorflow) <br>
+  Question 2: Gradient Boosting (scikit-learn)<br>
+  <br>
+  Model validation:<br>
+  Stratified sample split 80-20<br>
+  5-fold cross validation<br>
+  <br>
+  Hyperparameter tuning: <br>
+  GridSearchCV<br>
+  parameters: number of estimators. Other parameters were not considered for now.<br>
+  scroring: F1. Recall could be considered after feedback.<br>
+  <br>
+  Data cleaning:<br>
+  Attrition dataset: Calculated "Days at company" feature and dropped samples over 1.5 times the interquartile range. Other features were not considered for now.
+</p>
+
+</div>
+
+
+
+
+
+</div>
+
+<div class="footer-layout">
+  <p>Strategic Workforce Planning and Insight</p>
+</div>
+
+    <!-- <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.title}}" placeholder="Title" (input)="updateTitle($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.date}}" placeholder="Date" (input)="updateDate($event)">
+      </mat-form-field>
+    </form>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.publisher}}" placeholder="Publisher" (input)="updatePublisher($event)">
+      </mat-form-field>
+    </form>
+    <p></p>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput value ="{{backend.publisher_place}}" placeholder="Place of Publishing" (input)="updatePublisherPlace($event)">
+      </mat-form-field>
+    </form> -->
